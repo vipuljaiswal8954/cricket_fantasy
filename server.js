@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import router from "./routes/index.js"; // Importing the main router for routing
 
-import { insertSampleNotifications } from "./loadSampleData/loadNotification.js";
 import { insertSampleMatches } from "./loadSampleData/loadMatches.js";
 
 dotenv.config(); // Load environment variables from a .env file into process.env
