@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "e59c7f49-33cd-43d8-a918-9d32b4e1f777",
+		"name": "Cricket_Fantasy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19355870"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "send_otp",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\":\"+918954445500\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/auth/send_otp",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"auth",
+								"send_otp"
+							]
+						},
+						"description": "Send OTP to user Phone Number"
+					},
+					"response": []
+				},
+				{
+					"name": "resend_otp",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\":\"+918954445500\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/auth/resend_otp",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"auth",
+								"resend_otp"
+							]
+						},
+						"description": "Resend OTP"
+					},
+					"response": []
+				},
+				{
+					"name": "verify_otp",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\":\"+918954445500\",\r\n    \"otp\":\"013448\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/auth/verify_otp",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"auth",
+								"verify_otp"
+							]
+						},
+						"description": "Verify OTP with Phone Number, return token and User Details"
+					},
+					"response": [
+						{
+							"name": "exampleRequest",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phoneNumber\":\"+918954445500\",\r\n    \"otp\":\"013448\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Base_URL}}/auth/verify_otp",
+									"host": [
+										"{{Base_URL}}"
+									],
+									"path": [
+										"auth",
+										"verify_otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "290"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"122-z5p/g3mei1UB+0MzMzZa2GskO54\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Apr 2024 13:29:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"phone\": \"+918954445500\",\n        \"_id\": \"660c082339b4ec2d65acb6e3\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBob25lIjoiKzkxODk1NDQ0NTUwMCIsIl9pZCI6IjY2MGMwODIzMzliNGVjMmQ2NWFjYjZlMyIsIl9fdiI6MH0sImlhdCI6MTcxMjA2NDU0N30.Iqh2JP1qKlXBNfoTj75NjFo-Ef74E-d_37NzTXQf0aQ\"\n}"
+						}
+					]
+				}
+			],
+			"description": "OTP related routes"
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "getUserProfile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/user/profile",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/user/notifications",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"user",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "User functionality Related routes"
+		},
+		{
+			"name": "match",
+			"item": [
+				{
+					"name": "getMatchesList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/match",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"match"
+							]
+						},
+						"description": "Get available Match List from DB"
+					},
+					"response": []
+				}
+			],
+			"description": "Match Related Routes"
+		},
+		{
+			"name": "wallet",
+			"item": [
+				{
+					"name": "getBalance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Base_URL}}/wallet/balance",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"wallet",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addBalance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":\"120\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/wallet/deposit",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"wallet",
+								"deposit"
+							]
+						},
+						"description": "Add Balance to User Wallet"
+					},
+					"response": []
+				},
+				{
+					"name": "withdrawBalance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":\"80\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/wallet/withdraw",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"wallet",
+								"withdraw"
+							]
+						},
+						"description": "Withdraw Balance from User Wallet"
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL}}/wallet/transactions",
+							"host": [
+								"{{Base_URL}}"
+							],
+							"path": [
+								"wallet",
+								"transactions"
+							]
+						},
+						"description": "Get User Transactions"
+					},
+					"response": []
+				}
+			],
+			"description": "Wallet and Transaction related routes"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBob25lIjoiKzkxODk1NDQ0NTUwMCIsIl9pZCI6IjY2MGMwODIzMzliNGVjMmQ2NWFjYjZlMyIsIl9fdiI6MH0sImlhdCI6MTcxMjA2NDU0N30.Iqh2JP1qKlXBNfoTj75NjFo-Ef74E-d_37NzTXQf0aQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Base_URL",
+			"value": "http://localhost:3001",
+			"type": "string"
+		}
+	]
+}
