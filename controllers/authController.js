@@ -78,8 +78,31 @@ export const verifyOtp = async (req, res) => {
       // Send response with user data and token
       return res.status(200).json({ user, token });
     } else {
-      // Incorrect OTP entered
-      return res.status(401).json({ error: "Incorrect OTP" });
+      // as OTP is incorrect, we are only using this code for twilio trial account, comment this code for twilio paid account
+      let user = await User.findOne({ phone: phoneNumber });
+
+      if (!user) {
+        user = new User({ phone: phoneNumber });
+        await user.save();
+        const newWallet = new Wallet({
+          userId: user._id,
+          balance: 0, // Set initial balance to 0 or any other value you desire
+          transactions: [], // Start with an empty array of transactions
+        });
+        insertSampleNotifications(user._id);
+
+        // Save the wallet to the database
+        await newWallet.save();
+      }
+
+      // Generate authentication token
+      const token = await user.authToken();
+
+      // Send response with user data and token
+      return res.status(200).json({ user, token });
+
+      // Incorrect OTP entered - unComment this code for twilio paid version
+      // return res.status(401).json({ error: "Incorrect OTP" });
     }
   } catch (error) {
     console.error(error);
